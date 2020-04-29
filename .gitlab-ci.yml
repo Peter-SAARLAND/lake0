@@ -1,3 +1,7 @@
+include:
+  - remote: 'https://gitlab.com/peter.saarland/scratch/-/raw/master/ci/templates/version.gitlab-ci.yml'
+  - remote: 'https://gitlab.com/peter.saarland/scratch/-/raw/master/ci/templates/release.gitlab-ci.yml'
+
 workflow:
   rules:
     - if: $CI_COMMIT_REF_NAME =~ /-wip$/
