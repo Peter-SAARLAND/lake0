@@ -1,4 +1,19 @@
-#!bin/sh
+#!bin/bash
+echo $ENVIRONMENT_DIR
+if [ -d $ENVIRONMENT_DIR ];
+then
+  # ToDo: replace this with `if0 environment load`
+  env_files=`find $ENVIRONMENT_DIR -type f -name "*.env"`
+
+  for file in $env_files;
+  do
+    echo "Loading $file"
+    set -o allexport
+    #source $file
+    export $(grep -hv '^#' $file | xargs)
+    set +o allexport
+  done
+fi
 
 echo "Starting container ..."
 
